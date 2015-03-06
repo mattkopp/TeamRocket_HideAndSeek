@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="edumatt_kopp.washington.students.teamrockethideandseek.Query">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/latitude_label"
+        android:text="@string/latitude_label"
+        android:layout_marginTop="0dp" />
+    <TextView
+        android:id="@+id/latitude_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/latitude_label"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/latitude_label"
+        android:layout_marginTop="0dp"
+        android:textIsSelectable="true"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/longitude_label"
+        android:text="@string/longitude_label"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:id="@+id/longitude_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/longitude_label"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/longitude_label"
+        android:layout_marginTop="50dp"
+        android:textIsSelectable="true" />
+
+
+    <TextView
+        android:id="@+id/time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time_label"
+        android:layout_marginTop="100dp"/>
+    <TextView
+        android:id="@+id/time_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/time_label"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/time_label"
+        android:layout_marginTop="100dp"
+        android:textIsSelectable="true" />
+
+
+</RelativeLayout>

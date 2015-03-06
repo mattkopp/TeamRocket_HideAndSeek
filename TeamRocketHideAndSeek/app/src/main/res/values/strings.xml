@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hide and Seek</string>
+    <string name="action_settings">Settings</string>
+    <string name="latitude_label">Latitude</string>
+    <string name="longitude_label">Longitude</string>
+    <string name="time_label">Time</string>
+    <string name="no_location_detected">No Location Detected</string>
+    <string name="share">Share</string>
+    <string name="post">Post to Mongo</string>
+    <string name="find">Where have I been?</string>
+    <string name="title_activity_query">I was last at...</string>
+
+</resources>
