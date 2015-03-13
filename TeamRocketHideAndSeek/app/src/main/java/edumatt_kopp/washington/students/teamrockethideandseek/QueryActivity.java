@@ -1,17 +1,13 @@
 package edumatt_kopp.washington.students.teamrockethideandseek;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
-import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -56,14 +52,13 @@ public class QueryActivity extends Activity {
 
                 DBCollection MyLatLong = db.getCollection("teamrocket");
 
-                DBCursor cursor = MyLatLong.find().sort(new BasicDBObject("$natural", -1));
+                DBObject cursor = MyLatLong.findOne();
 
                 //DBObject cursor = MyLatLong.findOne();
 
-                passLat = String.valueOf(cursor.one().get("Latitude"));
-                passLong = String.valueOf(cursor.one().get("Longitude"));
-                passTime = String.valueOf(cursor.one().get("Time"));
-                cursor.close();
+                passLat = String.valueOf(cursor.get("Latitude"));
+                passLong = String.valueOf(cursor.get("Longitude"));
+                passTime = String.valueOf(cursor.get("Time"));
                 client.close();
 
                 return "who cares?";
@@ -101,10 +96,5 @@ public class QueryActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    //lab 4B
-    public void onQueryClick(View view) {
-        Intent intent = new Intent(this, HideandSeekMap.class);
-        startActivity(intent);
     }
 }
