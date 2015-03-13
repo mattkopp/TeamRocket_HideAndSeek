@@ -58,6 +58,7 @@ public class QueryActivity extends Activity {
 
                 DBCursor cursor = MyLatLong.find().sort(new BasicDBObject("$natural", -1));
 
+                //DBObject cursor = MyLatLong.findOne();
 
                 passLat = String.valueOf(cursor.one().get("Latitude"));
                 passLong = String.valueOf(cursor.one().get("Longitude"));
