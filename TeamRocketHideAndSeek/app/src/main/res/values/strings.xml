@@ -8,10 +8,11 @@
     <string name="time_label">Time</string>
     <string name="no_location_detected">No Location Detected</string>
     <string name="share">Share</string>
-    <string name="post">Post to Mongo</string>
-    <string name="find">Where have I been?</string>
+    <string name="hide">hide</string>
+    <string name="seek">seek</string>
     <string name="title_activity_query">I was last at...</string>
     <string name="title_activity_hideand_seek_map">HideandSeekMap</string>
     <string name="hello_world">Hello world!</string>
     <string name="map_it">Map It!!!</string>
+    <string name="title_activity_seek_activity">Seek_activity</string>
 </resources>

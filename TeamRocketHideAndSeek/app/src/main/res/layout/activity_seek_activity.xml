@@ -56,13 +56,4 @@
         android:layout_toRightOf="@+id/time_label"
         android:layout_marginTop="100dp"
         android:textIsSelectable="true" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/map_it"
-        android:onClick="onQueryClick"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-
 </RelativeLayout>

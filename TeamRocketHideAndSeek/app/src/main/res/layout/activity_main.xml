@@ -52,18 +52,17 @@ limitations under the License.
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/post"
+        android:text="@string/hide"
         android:onClick="onPostClick"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/button"
         android:layout_centerVertical="true"
-        android:id="@+id/button" />
+        android:layout_centerHorizontal="true" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/find"
-        android:onClick="onQueryClick"
-        android:layout_below="@+id/button"
-        android:layout_toRightOf="@+id/longitude_label"
-        android:layout_toEndOf="@+id/longitude_label"
-        android:layout_marginTop="68dp" />
+        android:text="@string/seek"
+        android:onClick="onSeekClick"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_below="@+id/button" />
 </RelativeLayout>

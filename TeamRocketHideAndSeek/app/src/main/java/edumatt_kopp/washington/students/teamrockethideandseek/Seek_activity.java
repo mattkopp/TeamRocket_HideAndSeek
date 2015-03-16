@@ -19,7 +19,7 @@ import com.mongodb.MongoClientURI;
 import java.net.UnknownHostException;
 
 
-public class QueryActivity extends Activity {
+public class Seek_activity extends Activity {
 
     protected TextView queryLat;
     protected TextView queryLong;
@@ -34,7 +34,7 @@ public class QueryActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_query);
+        setContentView(R.layout.activity_seek_activity);
 
         queryLat = (TextView) findViewById(R.id.latitude_query);
         queryLong = (TextView) findViewById(R.id.longitude_query);
@@ -54,7 +54,7 @@ public class QueryActivity extends Activity {
                 MongoClient client = new MongoClient(uri);
                 DB db = client.getDB(uri.getDatabase());
 
-                DBCollection MyLatLong = db.getCollection("teamrocket");
+                DBCollection MyLatLong = db.getCollection("Seeker");
 
                 DBCursor cursor = MyLatLong.find().sort(new BasicDBObject("$natural", -1));
 
@@ -83,7 +83,7 @@ public class QueryActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_query, menu);
+        getMenuInflater().inflate(R.menu.menu_seek_activity, menu);
         return true;
     }
 
@@ -100,10 +100,5 @@ public class QueryActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    //lab 4B
-    public void onQueryClick(View view) {
-        Intent intent = new Intent(this, HideandSeekMap.class);
-        startActivity(intent);
     }
 }

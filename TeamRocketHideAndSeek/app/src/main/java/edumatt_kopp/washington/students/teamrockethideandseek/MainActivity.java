@@ -51,11 +51,22 @@ public class MainActivity extends Activity implements
 
         buildGoogleApiClient();
     }
+
     //Lab 4A
     public void onPostClick(View view) {
-        PostLocation postlocation = new PostLocation();
-        postlocation.execute();
-        Toast.makeText(this, "Coordinates Submitted!", Toast.LENGTH_SHORT).show();
+        PostLocationHide postlocationhide = new PostLocationHide();
+        postlocationhide.execute();
+        Toast.makeText(this, "You are now hiding", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, HideandSeekMap.class);
+        startActivity(intent);
+    }
+
+    public void onSeekClick(View view) {
+        PostLocationSeek postlocationseek = new PostLocationSeek();
+        postlocationseek.execute();
+        Toast.makeText(this, "You are now seeking", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Seek_activity.class);
+        startActivity(intent);
     }
 
 
@@ -98,7 +109,6 @@ public class MainActivity extends Activity implements
     }
 
 
-
     @Override
     public void onConnectionFailed(ConnectionResult result) {
         Log.i(TAG, "Connection Failed: ConnectionResult.GetErrorCode() = " + result.getErrorCode());
@@ -121,13 +131,12 @@ public class MainActivity extends Activity implements
         return true;
     }
 
-    private Intent getDefaultShareIntent(){
+    private Intent getDefaultShareIntent() {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, mShare);
         return intent;
     }
-
 
 
     @Override
@@ -146,7 +155,7 @@ public class MainActivity extends Activity implements
     }
 
     //lab 4A
-    private class PostLocation extends AsyncTask<Void, Void, String> {
+    private class PostLocationHide extends AsyncTask<Void, Void, String> {
         protected String doInBackground(Void... voids) {
             try {
                 //MongoClientURI uri = new MongoClientURI("mongodb://mattkopp:UWTacoma504@ds045001.mongolab.com:45001/locationlatlong");
@@ -155,7 +164,7 @@ public class MainActivity extends Activity implements
                 MongoClient client = new MongoClient(uri);
                 DB db = client.getDB(uri.getDatabase());
 
-                DBCollection MyLatLong = db.getCollection("teamrocket");
+                DBCollection MyLatLong = db.getCollection("Hider");
 
                 SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
                 String now = time.format(new Date());
@@ -175,15 +184,53 @@ public class MainActivity extends Activity implements
 
 
             } catch (UnknownHostException e) {
-                return "Unknown Host Exception";}
+                return "Unknown Host Exception";
+            }
         }
 
     }
 
-    //lab 4B
-    public void onQueryClick(View view){
-        Intent intent = new Intent(this, QueryActivity.class);
-        startActivity(intent);
+    //lab 4A
+    private class PostLocationSeek extends AsyncTask<Void, Void, String> {
+        protected String doInBackground(Void... voids) {
+            try {
+                //MongoClientURI uri = new MongoClientURI("mongodb://mattkopp:UWTacoma504@ds045001.mongolab.com:45001/locationlatlong");
+                MongoClientURI uri = new MongoClientURI("mongodb://jessie:james@ds049631.mongolab.com:49631/teamrocket");
+
+                MongoClient client = new MongoClient(uri);
+                DB db = client.getDB(uri.getDatabase());
+
+                DBCollection MyLatLong = db.getCollection("Seeker");
+
+                SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+                String now = time.format(new Date());
+
+                if (mLastLocation != null) {
+                    BasicDBObject LastLocation = new BasicDBObject();
+                    LastLocation.put("Latitude", String.valueOf(mLastLocation.getLatitude()));
+                    LastLocation.put("Longitude", String.valueOf(mLastLocation.getLongitude()));
+                    LastLocation.put("Time", String.valueOf(now));
+                    MyLatLong.insert(LastLocation);
+                    client.close();
+                    return "Coordinates submitted!";
+                } else {
+                    client.close();
+                    return "No location detected, no location submitted!";
+                }
+
+
+            } catch (UnknownHostException e) {
+                return "Unknown Host Exception";
+            }
+        }
+
     }
 }
+
+//    //lab 4B
+//    public void onQueryClick(View view){
+//        Intent intent = new Intent(this, QueryActivity.class);
+//        startActivity(intent);
+//    }
+//}
 
