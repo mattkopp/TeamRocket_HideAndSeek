@@ -10,8 +10,6 @@
     <string name="share">Share</string>
     <string name="hide">hide</string>
     <string name="seek">seek</string>
-    <string name="takeaguess">take a guess</string>
-    <string name="checkguess">check a guess</string>
     <string name="title_activity_query">I was last at...</string>
     <string name="title_activity_hideand_seek_map">HideandSeekMap</string>
     <string name="hello_world">Hello world!</string>
